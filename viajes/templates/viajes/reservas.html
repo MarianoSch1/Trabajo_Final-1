@@ -1,0 +1,9 @@
+{% extends 'viajes/base.html' %}
+{% block titulo%} Lista de reservas {% endblock %}
+{% block contenido %}
+  {% for reserva in lista_reservas %}
+      <ul>
+          <li> Nombre: {{Reserva.nombre}}, Fecha: {{Reserva.fecha_reserva}}, Hora: {{Reserva.hora_reserva}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}
