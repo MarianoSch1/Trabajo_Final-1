@@ -1,26 +1,16 @@
-<!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-  </head>
-  <body>
-      <h1>buscar reserva por nombre</h1>
-      <h2>colocar nombre completo</h2>
-    
-      <form action="/mi-familia/buscar" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Buscar reserva">
-      </form>
+{% extends 'viajes/base.html' %}
+{% block titulo%} Buscar Reserva {% endblock %}
+{% block contenido %}
+  
+  <form action="/buscar_reserva" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
 
-      {% for reserva in lista_reservas %}
+  {% for reserva in lista_reservas%}
       <ul>
-          <li> Nombre: {{Reserva.nombre}}, Fecha: {{Reserva.fecha_reserva}}, Hora: {{Reserva.hora_reserva}}</li>
+          <li> Nombre: {{reserva.nombre}}, Dirección: {{reserva.fecha_reserva}}, Pasaporte: {{reserva.hora_reserva}}</li>
       </ul>
-      {% endfor %}
-
-  </body>
-  </html>
+  {% endfor %}
+{% endblock %}
