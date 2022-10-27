@@ -3,7 +3,7 @@
 {% block contenido %}
   {% for reserva in lista_reservas %}
       <ul>
-          <li> Nombre: {{Reserva.nombre}}, Fecha: {{Reserva.fecha_reserva}}, Hora: {{Reserva.hora_reserva}}</li>
+          <li> Nombre: {{reserva.nombre}}, Fecha: {{reserva.fecha_reserva}}, Hora: {{reserva.hora_reserva}}</li>
       </ul>
   {% endfor %}
 {% endblock %}

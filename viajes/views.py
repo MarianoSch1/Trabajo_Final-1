@@ -2,10 +2,11 @@ from django.shortcuts import render
 from viajes.models import Reserva
 from viajes.forms import Buscar
 from django.views import View
+from viajes.forms import Buscar, ReservaForm
 
 def mostrar_reserva(request):
   lista_reservas = Reserva.objects.all()
-  return render(request, "viajes/rervas.html", {"lista_reservas": lista_reservas})
+  return render(request, "viajes/reservas.html", {"lista_reservas": lista_reservas})
 
 class BuscarReserva(View):
 
@@ -25,4 +26,25 @@ class BuscarReserva(View):
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form':form, 
                                                         'lista_reservas':lista_reservas})
+        return render(request, self.template_name, {"form": form})
+
+class AltaReserva(View):
+    
+    form_class = ReservaForm
+    template_name = 'viajes/alta_reserva.html'
+    initial = {"nombre":"", "fecha_reserva":"", "hora_reserva":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"se cargo con éxito la reserva de {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                            'msg_exito': msg_exito})
+            
         return render(request, self.template_name, {"form": form})
