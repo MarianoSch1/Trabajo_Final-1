@@ -1,0 +1,9 @@
+{% extends 'viajes/base.html' %}
+{% block titulo%} Lista de vuelos {% endblock %}
+{% block contenido %}
+  {% for vuelo in lista_vuelos %}
+      <ul>
+          <li> Nombre: {{vuelo.destino}}, Fecha: {{vuelo.fecha_vuelo}},}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}

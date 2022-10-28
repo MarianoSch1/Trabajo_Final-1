@@ -1,0 +1,12 @@
+{% extends 'viajes/base.html' %}
+{% block titulo%}Elejí tu paquete turístico{% endblock %}
+{% block contenido %}
+<form action="paquete" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
+  <h2 style="color:green">{{msg_exito}}</h2>
+
+  {% endblock %}
