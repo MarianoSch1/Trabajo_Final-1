@@ -20,6 +20,6 @@ from viajes.views import (AltaReserva, mostrar_reserva, BuscarReserva)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservas/', mostrar_reserva),
-    path('buscar_reserva', BuscarReserva.as_view()),
-    path('altas',AltaReserva.as_view()),
+    path('buscar-reserva', BuscarReserva.as_view()),
+    path('reservar',AltaReserva.as_view()),
 ]

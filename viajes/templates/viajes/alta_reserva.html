@@ -2,7 +2,7 @@
 {% block titulo%} Alta de nueva Reserva{% endblock %}
 {% block contenido %}
   
-  <form action="altas" method="post">
+  <form action="reservar" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">

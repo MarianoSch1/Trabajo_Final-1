@@ -2,7 +2,7 @@
 {% block titulo%} Buscar Reserva {% endblock %}
 {% block contenido %}
   
-  <form action="/buscar_reserva" method="post">
+  <form action="/buscar-reserva" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
