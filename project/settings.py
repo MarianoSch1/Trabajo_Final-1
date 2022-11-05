@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "bootstrap4",
+    'bootstrap_datepicker_plus',
     'viajes.apps.ViajesConfig',
+    'paquete.apps.PaqueteConfig',
+    'vuelos.apps.VuelosConfig',
 ]
 
 MIDDLEWARE = [
