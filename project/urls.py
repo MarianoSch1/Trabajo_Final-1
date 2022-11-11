@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from viajes.views import AltaReserva, mostrar_reserva, BuscarReserva
+from viajes.views import AltaReserva, mostrar_reserva, BuscarReserva,ReservaList,ReservaCrear, ReservaDelete, ReservaUpdate
 from paquete.views import AltaPaquete
 from vuelos.views import AltaVuelo, mostrar_vuelos, BuscarVuelo
 
@@ -28,4 +28,8 @@ urlpatterns = [
     path('vuelos/', mostrar_vuelos),
     path('reservar-vuelo',AltaVuelo.as_view()),
     path('buscar-vuelo',BuscarVuelo.as_view()),
+    path('panel-reservas/',ReservaList.as_view(), name = "reserva-lista"),
+    path('panel-reservas/crear', ReservaCrear.as_view(), name = "reserva-crear"),
+    path('panel-reservas/<int:pk>/borrar',ReservaDelete.as_view(), name = "reserva-borrar"),
+    path('panel-reservas/<int:pk>/actualizar',ReservaUpdate.as_view(), name = "reserva-actualizar"),
 ]

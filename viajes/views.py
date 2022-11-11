@@ -4,6 +4,7 @@ from viajes.models import Reserva
 from viajes.forms import Buscar
 from django.views import View
 from viajes.forms import Buscar, ReservaForm
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
 def mostrar_reserva(request):
   lista_reservas = Reserva.objects.all()
@@ -49,3 +50,20 @@ class AltaReserva(View):
                                                             'msg_exito': msg_exito})
             
         return render(request, self.template_name, {"form": form})
+
+class ReservaList(ListView):
+    model= Reserva
+
+class ReservaCrear(CreateView):
+    model = Reserva
+    success_url= "/panel-reserva/"
+    fields= ["nombre", "fecha_reserva", "hora_reserva"]
+
+class ReservaDelete(DeleteView):
+    model = Reserva
+    success_url = "/panel-reservas"
+
+class ReservaUpdate(UpdateView):
+    model = Reserva
+    fields = ["nombre", "fecha_reserva", "hora_reserva"]
+    success_url =  "/panel-reservas"
