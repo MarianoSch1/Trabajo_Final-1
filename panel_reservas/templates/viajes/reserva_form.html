@@ -11,7 +11,8 @@
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="agregar">
+        <input type="submit" value="Agendar">
     </form>
+<a href="{% url 'reserva-lista' %}">Volver a mis reservas</a>
 
 {% endblock %}

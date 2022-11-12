@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'viajes.apps.ViajesConfig',
     'paquete.apps.PaqueteConfig',
     'vuelos.apps.VuelosConfig',
+    'panel_reservas.apps.PanelReservasConfig',
 ]
 
 MIDDLEWARE = [

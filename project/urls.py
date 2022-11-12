@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from viajes.views import AltaReserva, mostrar_reserva, BuscarReserva,ReservaList,ReservaCrear, ReservaDelete, ReservaUpdate
+from django.urls import path, include
+from viajes.views import AltaReserva, mostrar_reserva, BuscarReserva
 from paquete.views import AltaPaquete
 from vuelos.views import AltaVuelo, mostrar_vuelos, BuscarVuelo
 
@@ -28,8 +28,5 @@ urlpatterns = [
     path('vuelos/', mostrar_vuelos),
     path('reservar-vuelo',AltaVuelo.as_view()),
     path('buscar-vuelo',BuscarVuelo.as_view()),
-    path('panel-reservas/',ReservaList.as_view(), name = "reserva-lista"),
-    path('panel-reservas/crear', ReservaCrear.as_view(), name = "reserva-crear"),
-    path('panel-reservas/<int:pk>/borrar',ReservaDelete.as_view(), name = "reserva-borrar"),
-    path('panel-reservas/<int:pk>/actualizar',ReservaUpdate.as_view(), name = "reserva-actualizar"),
+    path('panel-reservas/', include('panel_reservas.urls'))
 ]
