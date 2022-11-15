@@ -10,7 +10,7 @@
 
   {% for reserva in lista_reservas%}
       <ul>
-          <li> Nombre: {{reserva.nombre}}, Dirección: {{reserva.fecha_reserva}}, Pasaporte: {{reserva.hora_reserva}}</li>
+          <li> Nombre: {{reserva.nombre}}, Destino: {{reserva.destino_reserva}}, Fecha: {{reserva.fecha_reserva}}, Hora: {{reserva.hora_reserva}}, ReservaN°: {{reserva.id}}</li>
       </ul>
   {% endfor %}
 {% endblock %}

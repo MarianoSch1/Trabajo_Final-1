@@ -9,9 +9,10 @@ class Vuelos(models.Model):
         Bariloche = "San Carlos de Bariloche"
         Iguazu = "Puerto Iguazú"
         Mendoza = "Mendoza"
+    nombre_pasajero = models.CharField(max_length=200, default="")
     destino = models.CharField(max_length=100, choices= DestinoChoices.choices, default=DestinoChoices.Bogota)
     fecha_vuelo_ida = models.CharField(max_length=200, default="")
     fecha_vuelo_vuelta= models.CharField(max_length=100, default="")
     
     def __str__(self):
-        return f"{self.destino}, {self.fecha_vuelo_ida}, {self.id}"
+        return f"{self.nombre_pasajero}, {self.destino}, {self.fecha_vuelo_ida}, {self.fecha_vuelo_vuelta},{self.id}"

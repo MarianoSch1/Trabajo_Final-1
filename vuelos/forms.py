@@ -8,7 +8,7 @@ class Buscar(forms.Form):
 class VueloForm(forms.ModelForm):
     class Meta:
         model = Vuelos
-        fields = ['destino' , 'fecha_vuelo_ida' , 'fecha_vuelo_vuelta']
+        fields = ['nombre_pasajero', 'destino' , 'fecha_vuelo_ida' , 'fecha_vuelo_vuelta', 'id']
         widgets = {
             'fecha_vuelo_ida': DatePickerInput(format='%d-%m-%y'),
             'fecha_vuelo_vuelta': DatePickerInput(format='%d-%m-%y'),}

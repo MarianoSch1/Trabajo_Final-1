@@ -33,7 +33,7 @@ class AltaReserva(View):
     
     form_class = ReservaForm
     template_name = 'viajes/alta_reserva.html'
-    initial = {"nombre":"", "fecha_reserva":"", "hora_reserva":""}
+    initial = {"nombre":"", "destino_reserva":"", "fecha_reserva":"", "hora_reserva":""}
 
     def get(self, request):
         form = self.form_class(initial=self.initial)
@@ -43,9 +43,10 @@ class AltaReserva(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            msg_exito = f"se cargo con éxito la reserva de {form.cleaned_data.get('nombre')}"
+            msg_exito = f"Se cargo con éxito la reserva de {form.cleaned_data.get('nombre')}, a {form.cleaned_data.get('destino_reserva')}, para el día {form.cleaned_data.get('fecha_reserva')} a las {form.cleaned_data.get('hora_reserva')}"
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form':form, 
                                                             'msg_exito': msg_exito})
             
         return render(request, self.template_name, {"form": form})
+

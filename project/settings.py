@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     "bootstrap4",
     'bootstrap_datepicker_plus',
     'viajes.apps.ViajesConfig',
-    'paquete.apps.PaqueteConfig',
     'vuelos.apps.VuelosConfig',
+    'panel_reservas.apps.PanelReservasConfig',
+    'blog_opiniones.apps.BlogOpinionesConfig'
 ]
+APPEND_SLASH = False
+REMOVE_SLASH = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

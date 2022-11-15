@@ -1,3 +1,5 @@
 from django.shortcuts import render
-
-# Create your views here.
+from blog_opiniones.models import Configuracion
+def index(request):
+    configuracion = Configuracion.objects.first()
+    return render(request, 'blog_opiniones/index.html', {'configuracion':configuracion})

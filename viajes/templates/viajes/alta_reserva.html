@@ -6,12 +6,13 @@
 {% endblock %}
 
 {% block titulo%} Alta de nueva Reserva{% endblock %}
+{% block text %} Seleccione el destino, la fecha y hora del paquete que desea. Todos los paquetes incluyen, 6 noches de estadía, aereo ida y vuelta, y media pensión.{% endblock %}
 {% block contenido %}
   
-  <form action="/reservar" method="post">
+  <form action="/reservar/" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit">
+    <input type="submit" value="Reservar">
   </form>
 
   <h2 style="color:green">{{msg_exito}}</h2>

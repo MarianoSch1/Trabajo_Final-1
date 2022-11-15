@@ -8,7 +8,7 @@ class Buscar(forms.Form):
 class ReservaForm(forms.ModelForm):
     class Meta:
         model = Reserva
-        fields = ['nombre' , 'fecha_reserva' , 'hora_reserva']
+        fields = ['nombre' , 'destino_reserva' , 'fecha_reserva' , 'hora_reserva', 'id']
         widgets = {
             'fecha_reserva': DatePickerInput(format='%d-%m-%y'),
             'hora_reserva': TimePickerInput(),

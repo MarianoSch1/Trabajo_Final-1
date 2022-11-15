@@ -1,0 +1,16 @@
+{% extends 'viajes/base.html' %}
+{% load bootstrap4 %}
+
+{% block extrahead %}
+{{ form.media }}
+{% endblock %}
+
+{% block titulo%} Usted está borrando una Reserva{% endblock %}
+{% block contenido %}
+<form method="post">
+    {% csrf_token %}
+    "¿ Estás seguro de borrar la reserva {{ object }} ?"
+    <input type="submit" value="SI">
+    <a href="{% url 'reserva-lista' %}">Volver a mis reservas</a>
+</form>
+{% endblock %}
