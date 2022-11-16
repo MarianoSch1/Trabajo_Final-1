@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from viajes.views import AltaReserva, mostrar_reserva, BuscarReserva
 from vuelos.views import AltaVuelo, mostrar_vuelos, BuscarVuelo
-from blog_opiniones.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +27,5 @@ urlpatterns = [
     path('reservar-vuelo',AltaVuelo.as_view()),
     path('buscar-vuelo',BuscarVuelo.as_view()),
     path('panel-reservas/', include('panel_reservas.urls')),
-    path('blog-opiniones/', index),
+    path('blog-opiniones/', include('blog_opiniones.urls')),
 ]
