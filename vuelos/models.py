@@ -11,7 +11,7 @@ class Vuelos(models.Model):
         Mendoza = "Mendoza"
     nombre_pasajero = models.CharField(max_length=200, default="")
     destino = models.CharField(max_length=100, choices= DestinoChoices.choices, default=DestinoChoices.Bogota)
-    fecha_vuelo_ida = models.CharField(max_length=200, default="")
+    fecha_vuelo_ida = models.CharField(max_length=100, default="")
     fecha_vuelo_vuelta= models.CharField(max_length=100, default="")
     
     def __str__(self):

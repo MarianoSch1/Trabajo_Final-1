@@ -1,4 +1,4 @@
 from django.contrib import admin
-from blog_opiniones.models import Post
+from blog_opiniones.models import Opinion
 
-admin.site.register(Post)
+admin.site.register(Opinion)

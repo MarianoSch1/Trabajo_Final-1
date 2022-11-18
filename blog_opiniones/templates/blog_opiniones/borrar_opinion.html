@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    ¿Está seguro de borrar el post {{post.title}}? 
+    ¿Está seguro de borrar la opinión {{opinion.titulo}}? 
     <form method="post">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="si">
     </form>
 
-    <a href="{% url 'list-post' %}">Volver a la lista de post</a>
+    <a href="{% url 'opiniones' %}">Volver a la lista de opiniones</a>
 
     
 </body>

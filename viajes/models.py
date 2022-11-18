@@ -11,7 +11,7 @@ class Reserva(models.Model):
         Alma_Pura_Iguazu = "Hotel Alma Pura Puerto Iguazú, 6 noches + aereo"
         Raices_Aconcagua_Mendoza = "Hotel Raices Aconcagua Mendoza, 6 noches + aereo"
     destino_reserva = models.CharField(max_length=100, choices= Destino.choices, default=Destino.Ibis_Bogota)
-    fecha_reserva = models.CharField(max_length=200)
-    hora_reserva = models.CharField(max_length=200)
+    fecha_reserva = models.CharField(max_length=100)
+    hora_reserva = models.CharField(max_length=100)
     def __str__(self):
         return f"{self.nombre}, {self.destino_reserva}, {self.fecha_reserva}, {self.hora_reserva}, {self.id}"

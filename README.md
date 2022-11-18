@@ -4,12 +4,12 @@ Grupo:
 Mariano Ezequiel Schvartzman
 Mariano Moure Jorge
 
+Requisitos:
+
+Python 3.7 o más actual con Django 3.2 o más actual.
+Bootstar 4 
+Django bootstrap datepcker plus 5.0.0
+Whitenoise
+Pillow
+
 Instructivo:
-Correr seed_data en el sell
-correr el servidor
-ir a reservas/ ahí debería verse la lista de reservas hasta el momento
-ir a buscar-reserva/ para buscar una reserva existente
-ir a reservar/ para crear una nueva reserva llenando los campos correspondientes
-ir a paquete/ para reservar un paquete de viaje ingresando destino, fecha de ida y de vuelta
-ir a reservar-vuelos/ para reservar viajes únicos insertando destino y fecha de viaje
-ir a vuelos/ para ver una lista de los vuelos reservados hasta el momento
