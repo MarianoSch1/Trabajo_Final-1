@@ -6,7 +6,7 @@ from blog_opiniones.models import Opinion
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.admin import User
+from django.contrib.auth.models import User
 
 def index(request):
     opiniones = Opinion.objects.order_by("-fecha_publicacion")
