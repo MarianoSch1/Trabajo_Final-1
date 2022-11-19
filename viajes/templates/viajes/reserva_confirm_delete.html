@@ -11,6 +11,6 @@
     {% csrf_token %}
     "¿ Estás seguro de borrar la reserva {{ object }} ?"
     <input type="submit" value="SI">
-    <a href="{% url 'reserva-lista' %}">Volver a mis reservas</a>
+    <a href="{% url 'reservas' %}">Volver a mis reservas</a>
 </form>
 {% endblock %}

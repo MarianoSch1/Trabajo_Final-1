@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 from viajes.models import Reserva
-from viajes.forms import Buscar
 from django.views import View
 from viajes.forms import Buscar, ReservaForm
+from django.views.generic import DeleteView, UpdateView
 
 def mostrar_reserva(request):
   lista_reservas = Reserva.objects.all()
@@ -49,4 +49,12 @@ class AltaReserva(View):
                                                             'msg_exito': msg_exito})
             
         return render(request, self.template_name, {"form": form})
+   
+class ReservaDelete(DeleteView):
+    model = Reserva
+    success_url = "/reservas/"
 
+class ReservaUpdate(UpdateView):
+    model = Reserva
+    fields = ["nombre", "destino_reserva", "fecha_reserva", "hora_reserva"]
+    success_url =  "/reservas/"

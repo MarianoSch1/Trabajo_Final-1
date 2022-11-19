@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Mi Blog de Viajes</title>
+    <title>Mi Viaje!</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -18,15 +18,20 @@
     <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'index-blog' %}">Mi blog de viajes</a>
+            <a class="navbar-brand" href="{% url 'index-blog' %}">Mi Viaje!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"></ul>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index-blog' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog-logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog-login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog-signup' %}">Signup</a></li>
+                {% endif %}
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
                 </ul>
             </div>
@@ -39,8 +44,8 @@
         {% block header %}
         <div class="container">
             <div class="text-center my-5">
-                <h1 class="fw-bolder">Mi blog de viajes</h1>
-                <p class="lead mb-0">un blog de viajes</p>
+                <h1 class="fw-bolder">Mi Viaje!</h1>
+                <p class="lead mb-0">Cuéntanos tu experiencia</p>
             </div>
         </div>
         {% endblock %}

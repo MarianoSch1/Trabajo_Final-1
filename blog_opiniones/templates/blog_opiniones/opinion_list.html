@@ -2,8 +2,7 @@
 {% block contenido %}
 <div class="container">
     {% if user.is_authenticated %}
-        <a href="{% url 'blog-logout' %}">Salir</a>
-        <a href="{% url 'create-post' %}">Crear un nuevo post</a>
+        <a href="{% url 'crear-opinion' %}">Crear un nuevo post</a>
         <a href="{% url 'profile-update' user.id %}">Actualizar Profile</a>
     {% else %}
         <a href="{% url 'blog-login' %}"> Ingresar</a>
@@ -11,23 +10,23 @@
     
     <table class="table">
         <tr>
-            <th>Title</th>
-            <th>Short Content</th>
-            <th>Date Published</th>
+            <th>Titulo</th>
+            <th>Breve Opinión</th>
+            <th>Fecha de Publicación</th>
             <th>Actions</th>
         </tr>
         
-        {% for post in object_list %}
+        {% for opinion in object_list %}
             <tr>
-                <td>{{ post.title }}</td>
-                <td>{{ post.short_content }}</td>
-                <td>{{ post.date_published }} </td>
+                <td>{{ opinion.titulo }}</td>
+                <td>{{ opinion.breve_opinion }}</td>
+                <td>{{ opinion.fecha_publicacion }} </td>
                 <td>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'delete-post' post.id  %}">Borrar</a>
-                        <a href="{% url 'update-post' post.id  %}">Actulizar</a>
+                        <a href="{% url 'borrar-opinion' opinion.id  %}">Borrar</a>
+                        <a href="{% url 'actualizar-opinion' opinion.id  %}">Actulizar</a>
                     {% endif %}
-                    <a href="{% url 'detail-post' post.id  %}">Ver</a>
+                    <a href="{% url 'opinion-detallada' opinion.id  %}">Ver</a>
                 </td>
             </tr>
         {% endfor %}

@@ -1,55 +1,52 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.admin import User
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
-from blog_opiniones.models import Post
+from blog_opiniones.models import Opinion
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-@login_required
 def index(request):
-    posts = Post.objects.order_by('-date_published').all()
-    return render(request, 'blog_opiniones/index.html', {"posts": posts})
+    opiniones = Opinion.objects.order_by('-fecha_publicacion').all()
+    return render(request, 'blog_opiniones/index.html', {'opiniones': opiniones})
 
+def about(request):
+    return render(request, 'blog_opiniones/about.html')
 
-class ListPost(LoginRequiredMixin, ListView):
-    paginate_by = 2
-    model = Post
+class ListaOpinion(ListView):
+    model = Opinion
 
-class CreatePost(CreateView):
-    model=Post
-    fields = ['title', 'short_content', 'content', 'image']
-    success_url = reverse_lazy("list-post")
-    
-class DetailPost(DetailView):
-    model=Post
+class CrearOpinion(LoginRequiredMixin,CreateView):
+    model = Opinion
+    fields = ["titulo", "breve_opinion", "opinion_detallada", "firma", "imagen"]
+    success_url = reverse_lazy("opiniones")
 
-class UpdatePost(UpdateView):
-    model = Post
-    fields = ['title', 'short_content', 'content', 'image']
-    success_url = reverse_lazy("list-post")
+class OpinionDetallada(DetailView):
+    model = Opinion
 
-class DeletePost(DeleteView):
-    model = Post
-    success_url = reverse_lazy("list-post")
+class ActualizarOpinion(LoginRequiredMixin,UpdateView):
+    model = Opinion
+    fields = ["titulo", "breve_opinion", "opinion_detallada", "firma", "imagen"]
+    success_url = reverse_lazy("opiniones")
 
+class BorrarOpinion(LoginRequiredMixin,DeleteView):
+    model = Opinion
+    success_url = reverse_lazy("opiniones")
 
-class SearchPostByName(ListView):
+class BuscarOpinionNombre(ListView):
     def get_queryset(self):
-        blog_title = self.request.GET.get('post-title')
-        return Post.objects.filter(title__icontains=blog_title)
-
+       opinion_titulo = self.request.GET.get("opinion-titulo")
+       return Opinion.objects.filter(titulo__icontains=opinion_titulo)
 
 class BlogLogin(LoginView):
-    template_name = 'blog_opiniones/blog_login.html'
-    next_page = reverse_lazy("list-post")
+    template_name = "blog_opiniones/blog_login.html"
+    next_page = reverse_lazy("index-blog")
 
 class BlogLogout(LogoutView):
-    template_name = 'blog_opiniones/blog_logout.html'
-    
+    template_name = "blog_opiniones/blog_logout.html"
+
 class BlogSignUp(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("blog-login")
@@ -57,5 +54,4 @@ class BlogSignUp(CreateView):
 
 class ProfileUpdate(UpdateView):
     model = User
-    fields = ['username', 'first_name', 'last_name', 'email']
-    success_url = reverse_lazy("blog-login")
+    fields = ['username', 'nombre', 'apellido', 'email']
