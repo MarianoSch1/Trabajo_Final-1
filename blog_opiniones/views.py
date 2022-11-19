@@ -9,8 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 def index(request):
-    opiniones = Opinion.objects.order_by("-fecha_publicacion")
-    return render(request, 'blog_opiniones/index.html')
+    opiniones = Opinion.objects.order_by('-fecha_publicacion').all()
+    return render(request, 'blog_opiniones/index.html', {'opiniones': opiniones})
 
 def about(request):
     return render(request, 'blog_opiniones/about.html')
@@ -45,7 +45,7 @@ class BlogLogin(LoginView):
     next_page = reverse_lazy("index-blog")
 
 class BlogLogout(LogoutView):
-    template_name = "blog_opiniones/blog_logout"
+    template_name = "blog_opiniones/blog_logout.html"
 
 class BlogSignUp(CreateView):
     form_class = UserCreationForm

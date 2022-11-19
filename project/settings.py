@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'viajes.apps.ViajesConfig',
     'vuelos.apps.VuelosConfig',
-    'panel_reservas.apps.PanelReservasConfig',
     'blog_opiniones.apps.BlogOpinionesConfig'
 ]
 APPEND_SLASH = False
