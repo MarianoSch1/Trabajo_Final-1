@@ -1,5 +1,44 @@
+{% extends 'blog_opiniones/base.html' %}
+
+{%block nav %}
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index-blog' %}">Mi Viaje!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0"></ul>
+                <li class="nav-item"><a class="nav-link" href="{% url 'index-blog' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'blog-logout' %}">Logout</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'blog-signup' %}">Signup</a></li>
+            {% endif %}
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+   <!-- Page header with logo and tagline-->
+   <header class="py-5 bg-light border-bottom mb-4">
+    {% block header %}
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Mi Viaje!</h1>
+            <p class="lead mb-0">Ya nos conocemos?</p>
+        </div>
+    </div>
+    {% endblock %}
+</header>
+
+{% block contenido %}
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Login</button>
 </form>
+{% endblock %}

@@ -42,7 +42,7 @@ class BuscarOpinionNombre(ListView):
 
 class BlogLogin(LoginView):
     template_name = "blog_opiniones/blog_login.html"
-    next_page = reverse_lazy("opiniones")
+    next_page = reverse_lazy("index-blog")
 
 class BlogLogout(LogoutView):
     template_name = "blog_opiniones/blog_logout"
