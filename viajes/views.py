@@ -52,4 +52,4 @@ class AltaReserva(View):
    
 class ReservaDelete(DeleteView):
     model = Reserva
-    success_url = "/reservas/
+    success_url = "/reservas/"
