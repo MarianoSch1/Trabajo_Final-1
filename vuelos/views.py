@@ -3,6 +3,7 @@ from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 from vuelos.models import Vuelos
 from vuelos.forms import VueloForm, Buscar
 from django.views import View
+from django.views.generic import DeleteView
 
 def mostrar_vuelos(request):
   lista_vuelos = Vuelos.objects.all()
@@ -22,7 +23,7 @@ class BuscarVuelo(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             nombre_pasajero = form.cleaned_data.get("nombre_pasajero")
-            lista_vuelos = Vuelos.objects.filter(destino__icontains=nombre_pasajero).all() 
+            lista_vuelos = Vuelos.objects.filter(nombre_pasajero__icontains=nombre_pasajero).all() 
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form':form, 
                                                         'lista_vuelos':lista_vuelos})
@@ -49,3 +50,7 @@ class AltaVuelo(View):
                                                             'msg_exito': msg_exito})
             
         return render(request, self.template_name, {"form": form})
+
+class VuelosDelete(DeleteView):
+    model = Vuelos
+    success_url = "/vuelos/"
