@@ -5,12 +5,12 @@
 {{ form.media }}
 {% endblock %}
 
-{% block titulo%} Usted está borrando una Reserva{% endblock %}
+{% block titulo%} Usted está cancelando un Vuelo{% endblock %}
 {% block contenido %}
 <form method="post">
     {% csrf_token %}
-    "¿ Estás seguro de borrar la reserva {{ object }} ?"
+    "¿ Estás seguro de cancelar su vuelo {{ object }} ?"
     <input type="submit" value="SI">
-    <a href="{% url 'reservas' %}">Volver a mis reservas</a>
+    <a href="{% url 'vuelos' %}">Volver a mis vuelos</a>
 </form>
 {% endblock %}

@@ -54,4 +54,5 @@ class BlogSignUp(CreateView):
 
 class ProfileUpdate(UpdateView):
     model = User
-    fields = ['username', 'nombre', 'apellido', 'email']
+    fields = ['username', 'first_name', 'last_name', 'email']
+    success_url = reverse_lazy("blog-login")

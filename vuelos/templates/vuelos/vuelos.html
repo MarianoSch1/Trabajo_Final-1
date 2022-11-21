@@ -1,39 +1,23 @@
 {% extends 'blog_opiniones/base.html' %}
 
-{%block nav %}
-<!-- Responsive navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'index-blog' %}">Mi Viaje!</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0"></ul>
-                <li class="nav-item"><a class="nav-link" href="{% url 'index-blog' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-{% endblock %}
+{% block header %}
    <!-- Page header with logo and tagline-->
-   <header class="py-5 bg-light border-bottom mb-4">
-    {% block header %}
-    <div class="container">
-        <div class="text-center my-5">
-            <h1 class="fw-bolder">Mi Viaje!</h1>
-            <p class="lead mb-0">A volar por el mundo!</p>
-        </div>
+<div class="container">
+    <div class="text-center my-5">
+        <h1 class="fw-bolder">Viajante!</h1>
+        <p class="lead mb-0"><h2>El mejor lugar para viajar</h2> </p>
+        <p class="lead mb-0"><h3>Busca tu vuelo</h3></p>
     </div>
+</div>
     {% endblock %}
-</header>
 {% block contenido %}
-  {% for vuelo in lista_vuelos %}
       <ul>
-          <li> Nombre: {{vuelo.nombre_pasajero}}, Destino: {{vuelo.destino}}, Fecha_Ida: {{vuelo.fecha_vuelo_ida}}, Fecha_Vuelta: {{vuelo.fecha_vuelo_vuelta}}</li>
+  {% for vuelo in lista_vuelos %}
+          <li> Nombre: {{vuelo.nombre_pasajero}}, Destino: {{vuelo.destino}}, Fecha_Ida: {{vuelo.fecha_vuelo_ida}}, Fecha_Vuelta: {{vuelo.fecha_vuelo_vuelta}}, Vuelo N°: {{vuelo.id}}</li>
+          <a href="{% url 'vuelo-borrar' vuelo.id%}">Borrar</a>
+          </li>
+  {% endfor %}    
       </ul>
+      <li><a href="{% url 'reservar-vuelo' %}">Reservar otro vuelo</a></li>
       <li><a href="{% url 'index-blog' %}">Volver al blog</a></li>
-  {% endfor %}
 {% endblock %}

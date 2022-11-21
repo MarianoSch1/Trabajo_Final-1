@@ -3,7 +3,7 @@ from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput, 
 from vuelos.models import Vuelos
 
 class Buscar(forms.Form):
-    destino = forms.CharField(max_length=100)
+    nombre_pasajero = forms.CharField(max_length=100)
 
 class VueloForm(forms.ModelForm):
     class Meta:
